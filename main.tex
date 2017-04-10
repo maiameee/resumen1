@@ -1,5 +1,125 @@
-\documentclass{article}
+\documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[spanish]{babel} 
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{multicol}
+\usepackage[left=2cm,top=2.5cm,right=2cm,bottom=2.5cm]{geometry} 
+\usepackage{lipsum}
+\usepackage{circuitikz}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
 \begin{document}
-(Type your content here.)
+
+\title{\Huge Resumen de Anisotropic fluid dynamics fo gubser flow}
+\author{\huge  arXiv:1703.10955 [nucl-th]}
+
+
+
+
+
+\date{Abril 2017}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+
+
+
+\maketitle
+
+\section{Hidrodinámica viscosa}
+
+Para obtener la hidrodinámica viscosa estándar expanden la función distribución cinética alrededor del equilibrio local.
+
+\begin{equation}
+f( \hat{x}, \hat{p})= f_{eq}(\beta_{\hat{u}}(\hat{x})(-\hat{u}(\hat{x}).\hat{p}))+{\delta}f( \hat{x}, \hat{p})
+\label{expansion}
+\end{equation}
+
+Con $\beta_{\hat{u}}=\frac{1}{\hat{T}(\hat{x})}$ y en el sistema de referencia local (LRF) $-\hat{u}(\hat{x}).\hat{p}$ es isótropo en el espacio de los momentos. Acá ${\delta}f$ es el que llevas la información las desviaciones del equilibrio local, en particular de las desviaciones del las anisotropías locales causadas por una expansión global anisótropa.
+
+
+
+En el marco de Landau la forma mas general del tensor de energía-momento es:
+
+\begin{equation}
+\hat{T}^{{\mu}{\nu}}= \hat{\epsilon}\hat{u}^{\mu}\hat{u}^{\nu}+\hat{P}\hat{\Delta}^{{\mu}{\nu}}+\hat{\pi}^{{\mu}{\nu}}
+\end{equation}
+
+Con $\hat{\epsilon}$ la densidad de energía en LRF, $\hat{P}=\hat{P}_{0}+\hat{\Pi}$ es la presión isótropa y $\hat{\pi}^{{\mu}{\nu}}$ es el tensor de esfuerzos viscosos.
+
+Para sistemas con simetría conforme la presión de bulk $\hat{\Pi}$ es nula. Esto se debe a que la presión de bulk es una fuerza viscosa que se opone a la expansión o compresión del fluido, lo cual se contradice con la simetría conforme (o al revés). En estos casos la presión isótropa  $\hat{P}$ es la presión térmica $\hat{P}_{0}=\hat{\epsilon}/3$.
+
+Las cantidades macroscópicas que aparecen en el tensor de energía-momento son proyecciones de los momentos de la función distribución $f( \hat{x}, \hat{p})$
+
+\begin{equation}
+\hat{\epsilon}=\hat{u}_{\mu}\hat{u}_{\nu}\hat{T}^{{\mu}{\nu}}=<(\hat{u}(\hat{x}).\hat{p})^2>
+\end{equation}
+\begin{equation}
+\hat{P}=\frac{1}{3}\hat{\Delta}_{{\mu}{\nu}}\hat{T}^{{\mu}{\nu}}= \frac{1}{3}\hat{\Delta}_{{\mu}{\nu}}\hat{p}^{\mu}\hat{p}^{\nu}
+\end{equation}
+\begin{equation}
+\hat{\pi}^{{\mu}{\nu}}= \hat{T}^{<{\mu}{\nu}>}=<\hat{p}^{<\mu}\hat{p}^{\nu>}>
+\end{equation}
+
+Donde $-\hat{u}_{\mu}\hat{u}_{\nu}$ es un proyector en la dirección de la cuadrivelocidad y $\hat{\Delta}_{{\mu}{\nu}}=\hat{g}_{{\mu}{\nu}}+\hat{u}_{\mu}\hat{u}_{\nu}$  proyecta en la superficie ortogonal a $\hat{u}_{\mu}$. Debido a que en el LRF tenemos $\hat{u}_{\mu}=(1,0,0,0)$, estos proyectores se llaman locamente temporal y espacial respectivamente.
+Por último el tensor de esfuerzos viscosos $\hat{\pi}^{{\mu}{\nu}}$ es la proyección de $\hat{T}^{{\mu}{\nu}}$ ortogonal a $\hat{u}_{\mu}$ y sin traza. Este proyector tal que $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}=\frac{1}{2}(\hat{\Delta}^{\mu}_{\alpha}\hat{\Delta}^{\nu}_{\beta}+\hat{\Delta}^{\mu}_{\beta}\hat{\Delta}^{\nu}_{\alpha}-\frac{2}{3}\hat{\Delta}^{{\mu}{\nu}}\hat{\Delta}_{{\alpha}{\beta}})$ y $\hat{B}^{<{\mu}{\nu}>}=\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{B}^{{\mu}{\nu}}$.
+
+\textbf{La unicidad de la descomposición (\ref{expansion}) requiere fijar la inversa de la temperatura local $\beta_{\hat{u}}(\hat{x})$}, lo cual se realiza gracias al la condición de Landau:
+
+\begin{equation}
+\hat{\epsilon}=<(\hat{u}(\hat{x}).\hat{p})^2>_{eq}=\hat{\epsilon}_{eq}({\hat{T}})=\frac{3}{\pi^2}{\hat{T}}^4
+\end{equation}
+
+De esta forma ${\hat{T}}$ en $f_{eq}$ es ajustada de forma que ${\delta}f$ no contribuya  a la densidad de energía en LRF $(\hat{\epsilon})$. Debido a esto toda la información de las desviaciones del sistema del equilibrio local esta guardada en el tensor de esfuerzos viscosos $\hat{\pi}^{{\mu}{\nu}}=<\hat{p}^{<\mu}\hat{p}^{\nu>}>_{{\delta}f}$ (es un momento de ${{\delta}f}$)
+
+
+\subsection{Ecuación para la densidad de energía}
+La ecuación de evolución para la densidad de energía se obtiene proyectando sobre $u_{nu}$ (proyección temporal) la ecuación de conservación del tensor energía-momento ($\hat{D}_{\mu}\hat{T}^{{\mu}{\nu}}=0$), donde $\hat{D}_{\mu}$ es la derivada covariante.
+Usando la conexión de Levi-Civita, los símbolos de Christoffel la métrica de de Sitter no nulos son:
+
+\begin{subequations}
+\begin{align}
+\Gamma^{0}_{{1}{1}}=\cosh(\rho)\sinh(\rho)\\
+\Gamma^{0}_{{2}{2}}=\cosh(\rho)\sinh(\rho)\sin^2(\theta)\\
+\Gamma^{1}_{{2}{2}}=\cos(\theta)\sin(\theta)\\
+\Gamma^{1}_{{1}{0}}=\Gamma^{1}_{{0}{1}}=\Gamma^{1}_{{2}{0}}=\Gamma^{1}_{{0}{2}}=\tanh(\rho)\\
+\Gamma^{2}_{{2}{1}}=\Gamma^{2}_{{1}{2}}=-\cot(\theta)
+\end{align}
+\end{subequations}
+
+Utilizando que $u_{\nu}=(-1,0,0,0)$ la proyección queda:
+
+\begin{equation}
+u_{\nu}\hat{D}_{\mu}\hat{T}^{{\mu}{\nu}}= \hat{T}^{{\mu}{0}}_{,\mu} +\Gamma^{\mu}_{{j}{\mu}}\hat{T}^{{j}{0}}+\Gamma^{0}_{{j}{\mu}}\hat{T}^{{\mu}{j}}
+\end{equation}
+
+Dado que $\hat{T}^{{\mu}{0}}=u_{\nu}\hat{T}^{{\mu}{\nu}}=\hat{\epsilon}\hat{u}^{\mu}$ el primer termino queda $\hat{T}^{{\mu}{0}}_{,\mu}={\partial}_{\rho}\hat{\epsilon}$. El segundo termino solo aporta el término $j=0$, $\Gamma^{\mu}_{{0}{\mu}}\hat{T}^{{0}{0}}=\Gamma^{1}_{{0}{1}}\hat{\epsilon}+\Gamma^{2}_{{0}{2}}\hat{\epsilon}=2\tanh(\rho)\hat{\epsilon}$.
+Finalmente desarrollamos el tercer termino:
+
+\begin{equation}
+\Gamma^{0}_{{j}{\mu}}\hat{T}^{{\mu}{j}}=\hat{\epsilon}\Gamma^{0}_{{j}{\mu}}\hat{u}^{j}\hat{u}^{\nu}+\hat{P}\Gamma^{0}_{{j}{\mu}}\hat{\Delta}^{{\mu}{j}}+\Gamma^{0}_{{j}{\mu}}\hat{\pi}^{{\mu}{j}}
+\label{tercterm}
+\end{equation}
+
+Se puede ver que el primer termino de (\ref{tercterm}) se anula ya que $\Gamma^{0}_{{j}{\mu}}\hat{u}^{j}\hat{u}^{\nu}=\Gamma^{0}_{{0}{0}}=0$. Se puede ver que el segundo termino tiene una parte que se anula ($\hat{P}\hat{u}^{j}\hat{u}^{\nu}$) cuando desarrollamos $\hat{\Delta}^{{\mu}{j}}$. El segundo término termina dando $\hat{P}\Gamma^{0}_{{j}{\mu}}\hat{\Delta}^{{\mu}{j}}=\hat{P}(\Gamma^{0}_{{1}{1}}\hat{g}^{{1}{1}}+\Gamma^{0}_{{2}{2}}\hat{g}^{{2}{2}})=2\tanh(\rho)\hat{P}_{0}=\frac{2}{3}2\tanh(\rho)\hat{\epsilon}$, donde en el ultimo paso se uso que $\hat{P}=\hat{P}_{0}$ cumple la ecuación de estado conforme.\\
+
+
+Para analizar el ultimo término conviene desarrollar $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}$ teniendo en cuenta que $\hat{u}^{\nu}$
+
+
+
+
+
+\begin{thebibliography}{10}
+
+\bibitem{Durrer} R. Durrer, A. Neronov "Cosmological Magnetic Fields: Their Generation, Evolution and Observation" 	arXiv:1303.7121 [astro-ph.CO]Appl. 
+%para citar es \cite{}
+
+\end{thebibliography}
+
+
+
 \end{document}
