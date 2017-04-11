@@ -29,6 +29,72 @@
 
 \maketitle
 
+La idea es generalizar Bjorken a un flujo con parte transversa finita y con expansión transversal y en el eje del haz
+
+\section{Introducción a flujo de Gubser}
+
+\subsection{Flujo de Bjorken}
+El esquema de Bjorken asume invariancia frente a boosts a lo largo del eje de haz, invariancia de traslación y rotación en el plano transverso (la invariancia de traslación es en la coordenada radial transversal). Con estas simetrías podemos parametrizar Minkowski como:
+
+\begin{equation}
+ds^2=-d{\tau}^2+{\tau}^2d{\eta}^2+dx^{2}_{\bot}+x^{2}_{\bot}d{\phi}^2
+\end{equation}
+
+Las invariancias frente a traslaciones y rotaciones implican que nada puede depender de $x_{\bot}$ o ${\phi}$, mientras que la invariancia frente a boost (si es exacta) implica que nada depende de $\eta$. Junto con la invariancia ante reflexiones en el eje del haz ($\eta\Rightarrow-\eta$) estas simetrías implican que en las coordenadas $(\tau,\eta,x_{\bot},\phi)$ el vector cuadrivelocidad queda completamente determinado, siendo $u^{\mu}=(1,0,0,0)$. Debido a las simetrías del problema no necesitamos una ecuación de estado para determinar el perfil de $u^{\mu}$.
+
+La invariancia ante traslaciones en el plano transverso no es algo realista, ya que el radio de los núcleos en las colisiones es de aproximadamente $13 fm$. La idea de Gubser es hacer que la dinámica de la colisión y el estado inicial respeten perfectamente la invariancia conforme relativista. La simetría conforme es debido a que los procesos en QCD por encima de la escala de confinamiento son aproximadamente invariantes conforme. Para extraer el perfil de velocidades reemplaza la simetría frente a traslaciones en $x_{\bot}$ por una simetría ante una especie de transformaciones conformes combinadas con rotaciones $SO(3)$ alrededor del eje del haz.
+
+\subsection{$SO(3)$ como subgrupo del grupo conforme}
+
+El grupo conforme es una extensión del grupo de Poincaré $ISO(3,1)$ a $SO(4,2)$ y los generadores del álgebra son:
+
+\begin{itemize}
+\item  Traslaciones: $\xi^{\mu}=a^{\mu}$ con $a^{\mu}$ constante.
+\end{itemize}
+
+\begin{itemize}
+\item  Rotaciones: $\xi^{\mu}=\omega^{\mu}_{\nu}x^{\nu}$ con $\omega_{{\mu}{\nu}}$ constante y antisimétrico.
+\end{itemize}
+
+\begin{itemize}
+\item  Transformaciones de escala: $\xi^{\mu}=x^{\mu}$
+\end{itemize}
+
+\begin{itemize}
+\item  Transformaciones conformes especiales: $\xi^{\mu}=x^{\nu}x_{\nu}b^{\mu}-2b^{\nu}x_{\nu}x^{\mu}$ con $b^{\mu}$ constante
+\end{itemize}
+
+\subsection{Perfil de $u^{\mu}$}
+
+
+\section{El flujo de Gubser}
+
+El flujo de Gubser es mas fácil de describir en el espacio de de Sitter de dimensión tres mas una linea $ds_{3}{\otimes}R$ donde el flujo se ve estático. Para pasar de Minkowski en coordenadas de Milne a $ds_{3}{\otimes}R$ hacemos un reescalado de Weyl de la métrica, seguido de un cambio de coordenadas $x^{\mu}=(\tau,\eta,x_{\bot},\phi)\rightarrow{\hat{x}^{\mu}}=(\rho,\theta,\phi,\eta)$ de la forma:
+
+
+\begin{subequations}
+\begin{align}
+\rho(\tilde{\tau},\tilde{r})=-\arcsin(\frac{1-{\tilde{\tau}}^2+{\tilde{r}}^2}{2\tilde{\tau}})\\
+\theta(\tilde{\tau},\tilde{r})=\arctan(\frac{2\tilde{r}}{1+{\tilde{\tau}}^2-{\tilde{r}}^2})
+\end{align}
+\label{cambio_de_coordenadas}
+\end{subequations}
+
+con $\tilde{\tau}=q\tau$ y $\tilde{r}=qr$, donde q es una escala de energía arbitraria que fija el tamaño transversal del sistema. En estas coordenadas en elemento de linea queda
+
+
+
+\begin{equation}
+d\hat{s}^2=-d{\rho}^2+\cosh^2{\rho}(d{\theta}^2+\sin^2{\theta}d{\phi}^2)+d{\eta}^2
+\label{metrica_de_Sitter}
+\end{equation}
+
+Este elemento de linea (\ref{metrica_de_Sitter}) es invariante ante rotaciones en el espacio $(\theta,\phi)$, que se corresponde con el grupo de simetría $SO(3)_q$. Agregando la simetría de reflexión, el elemento de linea (\ref{metrica_de_Sitter}) es invariante ante la "simetría de Gubser" $SO(3)_{q}{\otimes}SO(1,1){\otimes}Z_{2}$. El único vector normalizado y time-like en esta simetría es $u^{\mu}=(1,0,0,0)$.
+La simetría de Gubser también implica que las variables macroscopicas como la densidad de energía $\hat{\epsilon}(\hat{x})=\hat{\epsilon}(\rho)$ sólo depende del tiempo de de Sitter $\rho$. Además la función distribución $f( \hat{x}, \hat{p})=f( \rho, \hat{p}^2_{\Omega},\hat{p}^2_{\eta})$ solo puede depender del tiempo de de Sitter y de las componentes de momento $\hat{p}^2_{\Omega}=\hat{p}^2_{\theta}+\hat{p}^2_{\phi}/\sin^2\theta$.
+
+
+
+
 \section{Hidrodinámica viscosa}
 
 Para obtener la hidrodinámica viscosa estándar expanden la función distribución cinética alrededor del equilibrio local.
@@ -82,12 +148,15 @@ Usando la conexión de Levi-Civita, los símbolos de Christoffel la métrica de 
 
 \begin{subequations}
 \begin{align}
+\label{011}
 \Gamma^{0}_{{1}{1}}=\cosh(\rho)\sinh(\rho)\\
+\label{022}
 \Gamma^{0}_{{2}{2}}=\cosh(\rho)\sinh(\rho)\sin^2(\theta)\\
 \Gamma^{1}_{{2}{2}}=\cos(\theta)\sin(\theta)\\
 \Gamma^{1}_{{1}{0}}=\Gamma^{1}_{{0}{1}}=\Gamma^{1}_{{2}{0}}=\Gamma^{1}_{{0}{2}}=\tanh(\rho)\\
 \Gamma^{2}_{{2}{1}}=\Gamma^{2}_{{1}{2}}=-\cot(\theta)
 \end{align}
+\label{christoffel}
 \end{subequations}
 
 Utilizando que $u_{\nu}=(-1,0,0,0)$ la proyección queda:
@@ -96,7 +165,7 @@ Utilizando que $u_{\nu}=(-1,0,0,0)$ la proyección queda:
 u_{\nu}\hat{D}_{\mu}\hat{T}^{{\mu}{\nu}}= \hat{T}^{{\mu}{0}}_{,\mu} +\Gamma^{\mu}_{{j}{\mu}}\hat{T}^{{j}{0}}+\Gamma^{0}_{{j}{\mu}}\hat{T}^{{\mu}{j}}
 \end{equation}
 
-Dado que $\hat{T}^{{\mu}{0}}=u_{\nu}\hat{T}^{{\mu}{\nu}}=\hat{\epsilon}\hat{u}^{\mu}$ el primer termino queda $\hat{T}^{{\mu}{0}}_{,\mu}={\partial}_{\rho}\hat{\epsilon}$. El segundo termino solo aporta el término $j=0$, $\Gamma^{\mu}_{{0}{\mu}}\hat{T}^{{0}{0}}=\Gamma^{1}_{{0}{1}}\hat{\epsilon}+\Gamma^{2}_{{0}{2}}\hat{\epsilon}=2\tanh(\rho)\hat{\epsilon}$.
+Dado que $\hat{T}^{{\mu}{0}}=u_{\nu}\hat{T}^{{\mu}{\nu}}=\hat{\epsilon}\hat{u}^{\mu}$ el primer termino queda $\hat{T}^{{\mu}{0}}_{,\mu}={\partial}_{\rho}\hat{\epsilon}$. El segundo termino solo aporta si $j=0$, por lo tanto $\Gamma^{\mu}_{{0}{\mu}}\hat{T}^{{0}{0}}=\Gamma^{1}_{{0}{1}}\hat{\epsilon}+\Gamma^{2}_{{0}{2}}\hat{\epsilon}=2\tanh(\rho)\hat{\epsilon}$.
 Finalmente desarrollamos el tercer termino:
 
 \begin{equation}
@@ -107,18 +176,53 @@ Finalmente desarrollamos el tercer termino:
 Se puede ver que el primer termino de (\ref{tercterm}) se anula ya que $\Gamma^{0}_{{j}{\mu}}\hat{u}^{j}\hat{u}^{\nu}=\Gamma^{0}_{{0}{0}}=0$. Se puede ver que el segundo termino tiene una parte que se anula ($\hat{P}\hat{u}^{j}\hat{u}^{\nu}$) cuando desarrollamos $\hat{\Delta}^{{\mu}{j}}$. El segundo término termina dando $\hat{P}\Gamma^{0}_{{j}{\mu}}\hat{\Delta}^{{\mu}{j}}=\hat{P}(\Gamma^{0}_{{1}{1}}\hat{g}^{{1}{1}}+\Gamma^{0}_{{2}{2}}\hat{g}^{{2}{2}})=2\tanh(\rho)\hat{P}_{0}=\frac{2}{3}2\tanh(\rho)\hat{\epsilon}$, donde en el ultimo paso se uso que $\hat{P}=\hat{P}_{0}$ cumple la ecuación de estado conforme.\\
 
 
-Para analizar el ultimo término conviene desarrollar $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}$ teniendo en cuenta que $\hat{u}^{\nu}$
+Para analizar el ultimo término de utilizamos que $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}$ es un proyector y que $\hat{\pi}^{{\mu}{\nu}}=\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{T}^{{\mu}{\nu}}$. A partir de esto se puede escribir $\hat{\pi}^{{\mu}{\nu}}=\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{\pi}^{{\mu}{\nu}}$. Teniendo en cuanta que los únicos símbolos de Christoffel no nulos son (\ref{011}) y (\ref{022}) podemos escribir al último término como:
+
+\begin{equation}
+\Gamma^{0}_{{j}{\mu}}\hat{\Delta}^{{j}{\mu}}_{{\alpha}{\beta}}\hat{\pi}^{{\alpha}{\beta}}=(\Gamma^{0}_{{1}{1}}\hat{\Delta}^{{1}{1}}_{{\alpha}{\beta}}+\Gamma^{0}_{{2}{2}}\hat{\Delta}^{{2}{2}}_{{\alpha}{\beta}})\hat{\pi}^{{\alpha}{\beta}}
+\label{termviscocidad}
+\end{equation}
+
+Sabiendo que $\hat{\Delta}^{{i}{i}}=\hat{g}^{{i}{i}}$ se puede obtener que $\hat{\Delta}^{{i}{i}}_{{\alpha}{\beta}}={\delta}^{i}_{\alpha}{\delta}^{i}_{\beta}-\frac{1}{3}\hat{g}^{{i}{i}}\hat{\Delta}_{{\alpha}{\beta}}$. Introduciendo este resultado en (\ref{termviscocidad}) se obtiene 
+
+\begin{equation}
+\Gamma^{0}_{{j}{\mu}}\hat{\Delta}^{{j}{\mu}}_{{\alpha}{\beta}}\hat{\pi}^{{\alpha}{\beta}}=(\Gamma^{0}_{{1}{1}}\hat{\pi}^{{1}{1}} +\Gamma^{0}_{{2}{2}}\hat{\pi}^{{2}{2}}-\frac{1}{3}\hat{\Delta}_{{\alpha}{\beta}}\hat{\pi}^{{\alpha}{\beta}}(\hat{g}^{{1}{1}}\Gamma^{0}_{{1}{1}}+\hat{g}^{{2}{2}}\Gamma^{0}_{{2}{2}}))
+%\hat{\Delta}^{{1}{1}}_{{\alpha}{\beta}}+\Gamma^{0}_{{2}{2}}\hat{\Delta}^{{2}{2}}_{{\alpha}{\beta}})\hat{\pi}^{{\alpha}{\beta}}
+\label{viscdesarr}
+\end{equation}
+
+\begin{equation}
+\Gamma^{0}_{{j}{\mu}}\hat{\Delta}^{{j}{\mu}}_{{\alpha}{\beta}}\hat{\pi}^{{\alpha}{\beta}}=(\frac{2}{3}\Gamma^{0}_{{1}{1}}-\frac{1}{3}\hat{g}_{{1}{1}}\hat{g}^{{2}{2}})\hat{\pi}^{{1}{1}}+(\frac{2}{3}\Gamma^{0}_{{2}{2}}-\frac{1}{3}\hat{g}_{{2}{2}}\hat{g}^{{1}{1}})\hat{\pi}^{{2}{2}}-\frac{1}{3}(\hat{g}^{{1}{1}}\Gamma^{0}_{{1}{1}}+\hat{g}^{{2}{2}}\Gamma^{0}_{{2}{2}})\hat{\pi}^{{\eta}{\eta}}
+\label{viscdesarrr}
+\end{equation}
+
+
+Finalmente el ultimo término de la ecuación de la energía queda (luego de reemplazar todo):
+
+\begin{equation}
+\Gamma^{0}_{{j}{\mu}}\hat{\pi}^{{\mu}{j}}=\frac{1}{3}(\cosh(\rho)\sinh(\rho)\hat{\pi}^{{1}{1}}+\cosh(\rho)\sinh(\rho)\sin^2(\rho)\hat{\pi}^{{2}{2}}-\tanh(\rho)\hat{\pi}^{{\eta}{\eta}})
+\label{tercertermfinal}
+\end{equation}
+
+\textbf{\textit{El resultado de \ref{tercertermfinal} debería dar $\Gamma^{0}_{{j}{\mu}}\hat{T}^{{\mu}{j}}=\hat{\pi}^{{\eta}{\eta}}\tanh(\rho)$ según el paper. Menciona que este sistema tiene una sola componente independiente del tensor de esfuerzos viscosos y es $\hat{pi}=\hat{\pi}^{{\eta}{\eta}}$. Esto es análogo a lo que sucede en Bjorken al imponer condiciones sobre la traza y la isotropía de las componentes transversales.}}
 
 
 
 
 
-\begin{thebibliography}{10}
 
-\bibitem{Durrer} R. Durrer, A. Neronov "Cosmological Magnetic Fields: Their Generation, Evolution and Observation" 	arXiv:1303.7121 [astro-ph.CO]Appl. 
+%(\ref{tercterm}) conviene desarrollar $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}$ teniendo en cuenta que $\hat{u}^{\nu}$
+
+
+
+
+
+%\begin{thebibliography}{10}
+
+%\bibitem{Durrer} R. Durrer, A. Neronov "Cosmological Magnetic Fields: Their Generation, Evolution and Observation" 	arXiv:1303.7121 [astro-ph.CO]Appl. 
 %para citar es \cite{}
 
-\end{thebibliography}
+%\end{thebibliography}
 
 
 
