@@ -40,7 +40,7 @@ El esquema de Bjorken asume invariancia frente a boosts a lo largo del eje de ha
 ds^2=-d{\tau}^2+{\tau}^2d{\eta}^2+dx^{2}_{\bot}+x^{2}_{\bot}d{\phi}^2
 \end{equation}
 
-Las invariancias frente a traslaciones y rotaciones implican que nada puede depender de $x_{\bot}$ o ${\phi}$, mientras que la invariancia frente a boost (si es exacta) implica que nada depende de $\eta$. Junto con la invariancia ante reflexiones en el eje del haz ($\eta\Rightarrow-\eta$) estas simetrías implican que en las coordenadas $(\tau,\eta,x_{\bot},\phi)$ el vector cuadrivelocidad queda completamente determinado, siendo $u^{\mu}=(1,0,0,0)$. Debido a las simetrías del problema no necesitamos una ecuación de estado para determinar el perfil de $u^{\mu}$.
+Las invariancias frente a traslaciones y rotaciones implican que nada puede depender de $x_{\bot}$ o ${\phi}$, mientras que la invariancia frente a boost (si es exacta) implica que nada depende de $\eta$. Junto con la invariancia ante reflexiones en el eje del haz ($\eta\rightarrow-\eta$) estas simetrías implican que en las coordenadas $(\tau,\eta,x_{\bot},\phi)$ el vector cuadrivelocidad queda completamente determinado, siendo $u^{\mu}=(1,0,0,0)$. Debido a las simetrías del problema no necesitamos una ecuación de estado para determinar el perfil de $u^{\mu}$.
 
 La invariancia ante traslaciones en el plano transverso no es algo realista, ya que el radio de los núcleos en las colisiones es de aproximadamente $13 fm$. La idea de Gubser es hacer que la dinámica de la colisión y el estado inicial respeten perfectamente la invariancia conforme relativista. La simetría conforme es debido a que los procesos en QCD por encima de la escala de confinamiento son aproximadamente invariantes conforme. Para extraer el perfil de velocidades reemplaza la simetría frente a traslaciones en $x_{\bot}$ por una simetría ante una especie de transformaciones conformes combinadas con rotaciones $SO(3)$ alrededor del eje del haz.
 
@@ -66,6 +66,23 @@ El grupo conforme es una extensión del grupo de Poincaré $ISO(3,1)$ a $SO(4,2)
 
 
 Las primeras dos pertenecen a Poincaré y son vectores de killing $\textbf{\textit{L}}_{\xi}g_{{\mu}{\nu}}=0$. Los campos asociados a las transformaciones conformes y de escala no son vectores de killing pero son vectores conformes de killing y cumplen $\textbf{\textit{L}}_{\xi}g_{{\mu}{\nu}}=\frac{1}{2}(\nabla_{\lambda}\xi^{\lambda})g_{{\mu}{\nu}}$ (generan transformaciones que dejan invariante la métrica salvo transformaciones conformes).
+
+Si analizamos los generadores de las simetrías del flujo de Gubser tenemos:
+\begin{itemize}
+\item Rotaciones: $\xi^{\mu}=x^1\frac{\partial}{\partial{x}^2}-x^2\frac{\partial}{\partial{x}^1}$ es una simetría exacta $\leftrightarrow$ la colisión es perfectamente frontal
+\item Traslaciones: $\xi^{\mu}=\frac{\partial}{\partial{x}^1}$ y $\xi^{\mu}=\frac{\partial}{\partial{x}^2}$  traslaciones en la coordenada radial transversal
+\item Boost: $\xi^{\mu}=x^3\frac{\partial}{\partial{t}}-t\frac{\partial}{\partial{x}^3}$ en el eje del haz
+\end{itemize}
+
+La idea de Gubser es reemplazar los generadores de la invariancia transaccional por:
+
+\begin{equation}
+\xi_{{i}{4}}=
+\frac{\partial}{\partial{x}^i}
++q^2[2x^ix^{\mu}\frac{\partial}{\partial{x}^{\mu}}-x^{\mu}x_{\mu}\frac{\partial}{\partial{x}^i}]
+\end{equation}
+
+Donde se puede ver que el conmutador entre $\xi_{{1}{4}}$ y $\xi_{{2}{4}}$ es proporcional a $\frac{\partial}{\partial\phi}$ que es e generador de las rotaciones alrededor de eje del haz. Incluso  $\xi_{{1}{4}}$, $\xi_{{2}{4}}$ y $\frac{\partial}{\partial\phi}$ generan un $SO(3)$, subgrupo de $SO(4,2)$ que conmuta con $SO(1,1)$. El tipo de $SO(3)$ que usamos es controlado por el parámetro $q$. Si tomamos $q\rightarrow{0}$ el $SO(3)$ degenera un $ISO(2)$ que es la simetría del flujo de Bjorken. A grades rasgos $q$ es un parámetro (escala de energía) que fija el tamaño transversal del sistema. Para tener en cuenta esta dependencia con la escala del subgrupo, llamamos a $SO(3)=SO(3)_{q}$
 
 \subsection{Perfil de $u^{\mu}$}
 
@@ -117,6 +134,7 @@ En el marco de Landau la forma mas general del tensor de energía-momento es:
 
 \begin{equation}
 \hat{T}^{{\mu}{\nu}}= \hat{\epsilon}\hat{u}^{\mu}\hat{u}^{\nu}+\hat{P}\hat{\Delta}^{{\mu}{\nu}}+\hat{\pi}^{{\mu}{\nu}}
+\label{tensor_energia_momento}
 \end{equation}
 
 Con $\hat{\epsilon}$ la densidad de energía en LRF, $\hat{P}=\hat{P}_{0}+\hat{\Pi}$ es la presión isótropa y $\hat{\pi}^{{\mu}{\nu}}$ es el tensor de esfuerzos viscosos.
@@ -125,15 +143,18 @@ Para sistemas con simetría conforme la presión de bulk $\hat{\Pi}$ es nula. Es
 
 Las cantidades macroscópicas que aparecen en el tensor de energía-momento son proyecciones de los momentos de la función distribución $f( \hat{x}, \hat{p})$
 
-\begin{equation}
-\hat{\epsilon}=\hat{u}_{\mu}\hat{u}_{\nu}\hat{T}^{{\mu}{\nu}}=<(\hat{u}(\hat{x}).\hat{p})^2>
-\end{equation}
-\begin{equation}
-\hat{P}=\frac{1}{3}\hat{\Delta}_{{\mu}{\nu}}\hat{T}^{{\mu}{\nu}}= \frac{1}{3}\hat{\Delta}_{{\mu}{\nu}}\hat{p}^{\mu}\hat{p}^{\nu}
-\end{equation}
-\begin{equation}
+\begin{subequations}
+\begin{align}
+\label{energia}
+\hat{\epsilon}=\hat{u}_{\mu}\hat{u}_{\nu}\hat{T}^{{\mu}{\nu}}=<(\hat{u}(\hat{x}).\hat{p})^2>\\
+\label{presion}
+\hat{P}=\frac{1}{3}\hat{\Delta}_{{\mu}{\nu}}\hat{T}^{{\mu}{\nu}}=
+\frac{1}{3}<\hat{\Delta}_{{\mu}{\nu}}\hat{p}^{\mu}\hat{p}^{\nu}>\\
+\label{shear}
 \hat{\pi}^{{\mu}{\nu}}= \hat{T}^{<{\mu}{\nu}>}=<\hat{p}^{<\mu}\hat{p}^{\nu>}>
-\end{equation}
+\end{align}
+\end{subequations}
+
 
 Donde $-\hat{u}_{\mu}\hat{u}_{\nu}$ es un proyector en la dirección de la cuadrivelocidad y $\hat{\Delta}_{{\mu}{\nu}}=\hat{g}_{{\mu}{\nu}}+\hat{u}_{\mu}\hat{u}_{\nu}$  proyecta en la superficie ortogonal a $\hat{u}_{\mu}$. Debido a que en el LRF tenemos $\hat{u}_{\mu}=(1,0,0,0)$, estos proyectores se llaman locamente temporal y espacial respectivamente.
 Por último el tensor de esfuerzos viscosos $\hat{\pi}^{{\mu}{\nu}}$ es la proyección de $\hat{T}^{{\mu}{\nu}}$ ortogonal a $\hat{u}_{\mu}$ y sin traza. Este proyector tal que $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}=\frac{1}{2}(\hat{\Delta}^{\mu}_{\alpha}\hat{\Delta}^{\nu}_{\beta}+\hat{\Delta}^{\mu}_{\beta}\hat{\Delta}^{\nu}_{\alpha}-\frac{2}{3}\hat{\Delta}^{{\mu}{\nu}}\hat{\Delta}_{{\alpha}{\beta}})$ y $\hat{B}^{<{\mu}{\nu}>}=\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{B}^{{\mu}{\nu}}$.
@@ -147,7 +168,7 @@ La unicidad de la descomposición (\ref{expansion}) requiere fijar la inversa de
 De esta forma ${\hat{T}}$ en $f_{eq}$ es ajustada de forma que ${\delta}f$ no contribuya  a la densidad de energía en LRF $(\hat{\epsilon})$. Debido a esto toda la información de las desviaciones del sistema del equilibrio local esta guardada en el tensor de esfuerzos viscosos $\hat{\pi}^{{\mu}{\nu}}=<\hat{p}^{<\mu}\hat{p}^{\nu>}>_{{\delta}f}$ (es un momento de ${{\delta}f}$)
 
 
-\subsection{Ecuación para la densidad de energía}
+\subsubsection{Ecuación para la densidad de energía}
 La ecuación de evolución para la densidad de energía se obtiene proyectando sobre $u_{nu}$ (proyección temporal) la ecuación de conservación del tensor energía-momento ($\hat{D}_{\mu}\hat{T}^{{\mu}{\nu}}=0$), donde $\hat{D}_{\mu}$ es la derivada covariante.
 Usando la conexión de Levi-Civita, los símbolos de Christoffel la métrica (\ref{metrica_de_Sitter}) son:
 
@@ -216,7 +237,7 @@ Reemplazado todos los términos calculados la ecuación de evolución de la dens
 \label{ecuacion_energia}
 \end{equation}
 
-\subsection{Ecuación exacta para el tensor de esfuerzos viscosos}
+\subsubsection{Ecuación exacta para el tensor de esfuerzos viscosos}
 
 Debido a la alta simetría de este sistema, el tensor de esfuerzos viscosos tiene una única componente independiente $\hat{\pi}\equiv\hat{\pi}^{{\eta}{\eta}}$. Para obtener la ecuación de evolución para $\hat{\pi}$ a partir de la ecuación de Boltzmann en aproximación de tiempo de relajación (RTA):
 
@@ -288,7 +309,7 @@ La ecuación sin el ultimo término nos da la evolución conforme de Israel-Stew
 
 
 
-\subsection{Ecuación a segundo orden para el tensor de esfuerzos viscosos}
+\subsubsection{Ecuación a segundo orden para el tensor de esfuerzos viscosos}
 
 
 En el espacio de $ds_{3}{\otimes}R$ con la métrica $\hat{g}_{{\mu}{\nu}}=diag(-1,\cosh^2\rho,\cosh^2\rho\sin^2\theta,1)$, el ritmo de expansión es se la forma $\hat{\theta}=\hat{\nabla}_{\mu}\hat{u}^{\mu}=\frac{1}{\sqrt[]{-g}}\partial_{\mu}(\sqrt[]{-g}\hat{u}^{\mu})$ y el tensor de esfuerzos de corte es $\sigma_{{\mu}{\nu}}=\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{\nabla}_{\alpha}\hat{u}_{\beta}$ que se puede ver que es de la forma:
@@ -391,11 +412,112 @@ Finalmente multiplicando por $\frac{3}{4}\frac{1}{\hat{\epsilon}}$ se llega a un
 \end{equation}
 
 
+\subsection{Hidrodinámica anisótropa}
+
+La hidrodinámica anisótropa generaliza la hidrodinámica viscosa permitiendo que una deformación disipativa de la función distribución, debida a la expansión anisótropa del sistema. Si la taza de expansión en un dado eje (longitudinal) $\hat{l}^{\mu}$ es mucho mas grande o pequeña que la taza de expansión en las otras direcciones, podemos generalizar la descomposición ($\ref{expansion}$), haciendo que la función distribución en LRF se anisótropa en los momentos al agregar una dependencia adicional con el momento en la dirección de $\hat{l}^{\mu}$:
+
+\begin{equation}
+f( \hat{x}, \hat{p})=
+f_{a}(\beta_{\hat{u}}(-\hat{u}.\hat{p}),\beta_{\hat{l}}(\hat{l}.\hat{p}))+{\delta}\widetilde{f}( \hat{x},\hat{p})
+\label{expansion_anisotropa}
+\end{equation}
+
+Donde $u^{\mu}$, $l^{\mu}$, $\beta_{\hat{u}}$ y $\beta_{\hat{l}}$ son funciones de $\hat{x}$. Donde ${\delta}\widetilde{f}$ tiene la información de las correcciones dispositivas y el parámetro $\beta_{\hat{l}}$ da cuenta de que tan fuerte es la anisotropía local en los momentos. Por esta razón en el límite de $\beta_{\hat{l}}\rightarrow{0}$ la distribución anisótropa $f_{a}$ tiene que reducirse a la distribución de equilibrio local $f_{eq}$ de (\ref{expansion}).
+
+Para ver el efecto macroscópico en el tensor de energía-momento producido por la anisotropía, es conveniente escribir dicho tensor en términos de $\hat{u}^{\mu}$
+ y $\hat{l}^{\mu}$. En LRF elegimos $\hat{l}^{\mu}=(0,0,0,1)$.
+ La parte espacial ortogonal a estos dos vectores, se obtiene a través del proyector espacial transverso $\hat{\Xi}^{{\mu}{\nu}}=\hat{\Delta}^{{\mu}{\nu}}-\hat{l}^{\mu}\hat{l}^{\nu}$. De esta forma el cuadrimomento puede ser descompuesto en $\hat{p}^{\mu}=(-\hat{u}.\hat{p})\hat{u}^{\nu}+(\hat{l}.\hat{p})\hat{l}^{\mu}+\hat{p}^{{\{\mu}\}}$ con $\hat{p}^{{\{\mu}\}}=\hat{\Xi}^{{\mu}{\nu}}\hat{p}_{\nu}$ es el momento espacial transversal y $\hat{l}.\hat{p}=\hat{p}_{\eta}$ es el momento longitudinal en LRF.
+ 
+ A partir de esto podemos descomponer el tensor de energía-momento (\ref{tensor_energia_momento}), en el marco de Landau, de la siguiente forma:
+ 
+ \begin{equation}
+\hat{T}^{{\mu}{\nu}}= 
+\hat{\epsilon}\hat{u}^{\mu}\hat{u}^{\nu}
++\hat{P}_{L}\hat{l}^{\mu}\hat{l}^{\nu}
++\hat{P}_{\bot}\hat{\Xi}^{{\mu}{\nu}}
++2\hat{W}_{{\bot}{\hat{l}}}^{<{\mu}}{{\hat{l}^{\nu>}}}
++\hat{\pi}^{{\mu}{\nu}}_{\bot}
+\label{tensor_energia_momento_anisotropo}
+ \end{equation}
+
+Con 
+
+\begin{subequations}
+\begin{align}
+\hat{\epsilon}=\hat{u}_{\mu}\hat{u}_{\nu}\hat{T}^{{\mu}{\nu}}=<(\hat{u}(\hat{x}).\hat{p})^2>\\
+\label{presion_longitudinal}
+\hat{P}_{L}=
+\hat{l}_{\mu}\hat{l}_{\nu}\hat{T}^{{\mu}{\nu}}= 
+<(\hat{l}.\hat{p})^2>\\
+\label{presion_transversal}
+\hat{P}_{\bot}=
+\frac{1}{2}\hat{\Xi}_{{\mu}{\nu}}\hat{T}^{{\mu}{\nu}}=
+\frac{1}{2}<\hat{\Xi}_{{\mu}{\nu}}\hat{p}^{\mu}\hat{p}^{\nu}>\\
+\hat{W}_{{\bot}{\hat{l}}}^{{\mu}}=
+\hat{\Xi}^{\mu}_{\alpha}\hat{T}^{{\alpha}{\beta}}\hat{l}_{\beta}=
+<(\hat{l}.\hat{p})\hat{p}^{{\{\mu}\}}>\\
+\label{shear_transversal}
+\hat{\pi}^{{\mu}{\nu}}= \hat{\Xi}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{T}^{{\alpha}{\beta}}=<\hat{p}^{{\{}\mu}\hat{p}^{\nu{\}}}>
+\end{align}
+\end{subequations}
+
+Donde introducimos la notación $\hat{B}^{{{\{}\mu}{\nu{\}}}}=\hat{\Xi}^{{\mu}{\nu}}_{{\alpha}{\beta}}\hat{B}^{{\alpha}{\beta}}$ con el doble proyector $\hat{\Xi}^{{\mu}{\nu}}_{{\alpha}{\beta}}=\frac{1}{2}(\hat{\Xi}^{\mu}_{\alpha}\hat{\Xi}^{\nu}_{\beta}+\hat{\Xi}^{\mu}_{\beta}\hat{\Xi}^{\nu}_{\alpha}-\frac{2}{3}\hat{\Xi}^{{\mu}{\nu}}\hat{\Xi}_{{\alpha}{\beta}})$.
+Comparando la ecuación (\ref{tensor_energia_momento}) con (\ref{tensor_energia_momento_anisotropo}), se puede ver que el tensor $\hat{\pi}^{{\mu}{\nu}}$ es de la forma:
+
+\begin{equation}
+\hat{\pi}^{{\mu}{\nu}}= 
+\hat{\pi}^{{\mu}{\nu}}_{\bot}
++2\hat{W}_{{\bot}{\hat{l}}}^{<{\mu}}{{\hat{l}^{\nu>}}}
++\frac{1}{3}(\hat{P}_{\bot}-\hat{P}_{L})(\hat{\Xi}^{{\mu}{\nu}}-2\hat{l}^{\mu}\hat{l}^{\nu})
+\label{shear_anisotropo_descomposicion}
+ \end{equation}
+
+Donde se puede ver que el termino $\frac{1}{3}(\hat{P}_{\bot}-\hat{P}_{L})(\hat{\Xi}^{{\mu}{\nu}}-2\hat{l}^{\mu}\hat{l}^{\nu})$ es la diferencia entre el término $\hat{P}\hat{\Delta}^{{\mu}{\nu}}=(\hat{\Xi}^{{\mu}{\nu}}+\hat{l}^{\mu}\hat{l}^{\nu})\hat{P}=(\hat{\Xi}^{{\mu}{\nu}}+\hat{l}^{\mu}\hat{l}^{\nu})(\frac{2}{3}\hat{P}_{\bot}+\frac{1}{3}\hat{P}_{L})$ en la ecuación (\ref{tensor_energia_momento}) y los términos $(\hat{P}_{L}\hat{l}^{\mu}\hat{l}^{\nu}+\hat{P}_{\bot}\hat{\Xi}^{{\mu}{\nu}})$ en la ecuación (\ref{tensor_energia_momento_anisotropo}). Para llegar a esta conclusión se utilizó que debido a la simetría conforme se tiene que cumplir $\hat{\epsilon}=2\hat{P}_{\bot}+\hat{P}_{L}$ y que la ecuación de estado conforme es $\hat{\epsilon}=3\hat{P}_{0}(\epsilon)=2\hat{P}_{\bot}+\hat{P}_{L}$
+Debido a la parte de la simetría de Gubser $SO(3)_{q}{\otimes}Z_{2}$ se tiene que cumplir que $\hat{W}_{{\bot}{\hat{l}}}^{{\mu}}=0=\hat{\pi}^{{\mu}{\nu}}_{\bot}$, por lo que el tensor de energía-momento queda:
+
+ \begin{equation}
+\hat{T}^{{\mu}{\nu}}= 
+\hat{\epsilon}\hat{u}^{\mu}\hat{u}^{\nu}
++\hat{P}_{L}\hat{l}^{\mu}\hat{l}^{\nu}
++\hat{P}_{\bot}\hat{\Xi}^{{\mu}{\nu}}
+\label{tensor_e_m_gubser_anisotropo}
+ \end{equation}
+ 
+ La única componente independiente del tensor de esfuerzos viscosos $\hat{\pi}\equiv\hat{\pi}^{{\eta}{\eta}}$ define la diferencia entre las presiones longitudinal y transversal mediante
+ 
+ \begin{equation}
+\hat{P}_{L}-\hat{P}_{\bot}=
+\frac{3}{2}\hat{\pi}
+\label{diferenca_presiones}
+ \end{equation} 
+ 
+ y el tensor de esfuerzos viscosos queda definido como:
+ 
+\begin{equation}
+\hat{\pi}^{{\mu}{\nu}}= 
+\hat{\pi}(\hat{l}^{\mu}\hat{l}^{\nu}-\frac{1}{2}\hat{\Xi}^{{\mu}{\nu}})
+\label{shear_gubser}
+ \end{equation}
+
+Como función distribución anisótropa en la aproximación de primer orden usan el ansatz  de Romatschke-Strickland:
+
+\begin{equation}
+f_{a}(\hat{x},\hat{p},\hat{\Lambda},\xi)=
+f_{eq}(E_{RS}(\xi)/{\hat{\Lambda}})
+\label{Romatschke_Strickland}
+\end{equation}
+ 
+ Con $f_{eq}(z)=e^{-z}$ la función distribución de Boltzmann evaluada en un argumento que da cuenta de la anisotropía de los momentos
+ 
+ \begin{equation}
+ E_{RS}(\xi)\equiv\sqrt[]{(\hat{u}.\hat{p})^2+\xi(\hat{l}.\hat{p})^2}=\sqrt[]{\frac{\hat{p}^2_{\Omega}}{\cosh^2\rho}+(1+\xi)\hat{p}^2_{\eta}}
+ \label{E_RS}
+ \end{equation}
+ 
+ Con $\hat{\Lambda}$ y $\xi$ funciones de $\hat{x}$. Por la definición de (\ref{E_RS}) y comparando con (\ref{expansion_anisotropa}) podemos ver que $\beta_{\hat{u}}=1/\hat{\Lambda}(\rho)$ y $\beta_{\hat{l}}=\xi\beta_{\hat{u}}=\xi(\rho)/\hat{\Lambda}(\rho)$
 
 
 
-
-%(\ref{tercterm}) conviene desarrollar $\hat{\Delta}^{{\mu}{\nu}}_{{\alpha}{\beta}}$ teniendo en cuenta que $\hat{u}^{\nu}$
 
 
 
